@@ -8,7 +8,9 @@ ENV NODE_ENV=production
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# Build
+# Build with commit hash
+ARG COMMIT_HASH=unknown
+ENV COMMIT_HASH=${COMMIT_HASH}
 COPY . .
 RUN npm run build
 

@@ -1,12 +1,5 @@
 ---
-import { execSync } from 'node:child_process';
-
-let commit = 'unknown';
-try {
-	commit = execSync('git rev-parse --short HEAD').toString().trim();
-} catch (err) {
-	// fallback to unknown if git info unavailable
-}
+const commit = import.meta.env.COMMIT_HASH || 'unknown';
 const commitUrl = `https://github.com/httpparam/site-v1/commit/${commit}`;
 ---
 
